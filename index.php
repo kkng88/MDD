@@ -273,10 +273,11 @@ var langa=null;
 
 function redirect(lang2)
 {
- window.location = "index.php?lang1="lang1"&lang2="lang2;
+ window.location = "index.php?lang1="+langa+"&lang2="+lang2;
 }
 
 function setlang(lang1)
+{
 langa=lang1;
 }
  </script>
@@ -313,7 +314,7 @@ langa=lang1;
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
               
-              <ul class="nav" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
+              <ul class="nav2" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
            
                 <li><a onclick="redirect(en)">English</a></li>
                 <li><a onclick="redirect(ml)">Malay</a></li>
