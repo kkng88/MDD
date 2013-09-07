@@ -397,5 +397,6 @@
       }(window.jQuery)
     </script>
     <script src="bootstrap/js/holder/holder.js"></script>
+    <script src="bootstrap/js/mobile.js"></script>
   </body>
 </html>
