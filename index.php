@@ -78,6 +78,7 @@
     /* Carousel base class */
     .carousel {
       margin-bottom: 60px;
+	  margin-top:80px;
     }
 
     .carousel .container {
@@ -273,13 +274,41 @@ var langa=null;
 
 function redirect(lang2)
 {
+hideclass("menuitem1");
  window.location = "index.php?lang1="+langa+"&lang2="+lang2;
+ 
 }
 
 function setlang(lang1)
 {
 langa=lang1;
+hideclass("menuitem1");
+showclass("menuitem2");
+document.getElementById('brand').innerHTML="Set Language 2";
 }
+
+function hideclass(match)
+    {
+    var elems = document.getElementsByTagName('*'),i;
+    for (i in elems)
+        {
+        if((" "+elems[i].className+" ").indexOf(" "+match+" ") > -1)
+            {
+            elems[i].style.display = 'none';
+            }
+        }
+    }
+	function showclass(match)
+    {
+    var elems = document.getElementsByTagName('*'),i;
+    for (i in elems)
+        {
+        if((" "+elems[i].className+" ").indexOf(" "+match+" ") > -1)
+            {
+            elems[i].style.display = 'block';
+            }
+        }
+    }
  </script>
  
   </head>
@@ -302,24 +331,28 @@ langa=lang1;
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">Learn language</a>
+            <a id="brand" class="brand" href="#">Pictionary</a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
-              <ul class="nav" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
+              <ul class="nav menuitem1" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
            
                 <li><a href="#" onclick="setlang('en')">English</a></li>
                 <li><a href="#" onclick="setlang('ml')">Malay</a></li>
                 <li><a href="#" onclick="setlang('cn')">Mandarin</a></li>
-    
+				<li><a href="#" onclick="setlang('ja')">Japanese</a></li>
+				<li><a href="#" onclick="setlang('ge')">German</a></li>
+				
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
               
-              <ul class="nav" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
+              <ul class="nav menuitem2" style="display: none; opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
            
                 <li><a href="#" onclick="redirect('en')">English</a></li>
                 <li><a href="#" onclick="redirect('ml')">Malay</a></li>
                 <li><a href="#" onclick="redirect('cn')">Mandarin</a></li>
-    
+				<li><a href="#" onclick="redirect('ja')">Japanese</a></li>
+				<li><a href="#" onclick="redirect('ge')">German</a></li>
+				
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
             </div><!--/.nav-collapse -->
