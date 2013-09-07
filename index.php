@@ -273,7 +273,7 @@ var langa=null;
 
 function redirect(lang2)
 {
- window.location = "index.php?lang1="langa"&lang2="lang2;
+ window.location = "index.php?lang1="+langa+"&lang2="+lang2;
 }
 
 function setlang(lang1)
