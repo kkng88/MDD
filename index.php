@@ -307,18 +307,18 @@ langa=lang1;
             <div class="nav-collapse collapse">
               <ul class="nav" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
            
-                <li><a onclick="setlang(en)">English</a></li>
-                <li><a onclick="setlang(ml)">Malay</a></li>
-                <li><a onclick="setlang(cn)">Mandarin</a></li>
+                <li><a href="#" onclick="setlang('en')">English</a></li>
+                <li><a href="#" onclick="setlang('ml')">Malay</a></li>
+                <li><a href="#" onclick="setlang('cn')">Mandarin</a></li>
     
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
               
-              <ul class="nav2" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
+              <ul class="nav" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
            
-                <li><a onclick="redirect(en)">English</a></li>
-                <li><a onclick="redirect(ml)">Malay</a></li>
-                <li><a onclick="redirect(cn)">Mandarin</a></li>
+                <li><a href="#" onclick="redirect('en')">English</a></li>
+                <li><a href="#" onclick="redirect('ml')">Malay</a></li>
+                <li><a href="#" onclick="redirect('cn')">Mandarin</a></li>
     
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
