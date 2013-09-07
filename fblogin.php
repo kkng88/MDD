@@ -102,14 +102,14 @@
                     '%s', '%s', '%s',
                     '%s')
          ",
-            mysql_real_escape_string($user_profile['identifier']),
-            mysql_real_escape_string($user_profile['displayName']),
-            mysql_real_escape_string($user_profile['firstName']),
-            mysql_real_escape_string($user_profile['lastName']),
-            mysql_real_escape_string($user_profile['photoURL']),
-            mysql_real_escape_string($user_profile['email']),
-            mysql_real_escape_string($user_profile['gender']),
-            mysql_real_escape_string($user_profile['region'])
+            mysql_real_escape_string($user_profile->identifier),
+            mysql_real_escape_string($user_profile->displayName),
+            mysql_real_escape_string($user_profile->firstName),
+            mysql_real_escape_string($user_profile->lastName),
+            mysql_real_escape_string($user_profile->photoURL),
+            mysql_real_escape_string($user_profile->email),
+            mysql_real_escape_string($user_profile->gender),
+            mysql_real_escape_string($user_profile->region)
           );
             
           mysql_query($sql);  
