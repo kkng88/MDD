@@ -268,6 +268,19 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+ <script>
+var langa=null;
+
+function redirect(lang2)
+{
+ window.location = "index.php?lang1="lang1"&lang2="lang2;
+}
+
+function setlang(lang1)
+langa=lang1;
+}
+ </script>
+ 
   </head>
 
   <body>
@@ -292,11 +305,20 @@
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
               <ul class="nav" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="index.php?lang1=en&lang2=ml">English-Malay</a></li>
-                <li><a href="index.php?lang1=en&lang2=cn">English-Chinese</a></li>
-                <li><a href="index.php?lang1=ml&lang2=cn">Malay-Chinese</a></li>
-                <li><a href="#contact">Contact</a></li>
+           
+                <li><a onclick="setlang(en)">English</a></li>
+                <li><a onclick="setlang(ml)">Malay</a></li>
+                <li><a onclick="setlang(cn)">Mandarin</a></li>
+    
+                <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
+              </ul>
+              
+              <ul class="nav" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
+           
+                <li><a onclick="redirect(en)">English</a></li>
+                <li><a onclick="redirect(ml)">Malay</a></li>
+                <li><a onclick="redirect(cn)">Mandarin</a></li>
+    
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
             </div><!--/.nav-collapse -->
