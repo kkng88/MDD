@@ -15,13 +15,17 @@
     /* GLOBAL STYLES
     -------------------------------------------------- */
     /* Padding below the footer and lighter body text */
-
+	html {
+	overflow: hidden;
+	}
     body {
       padding-bottom: 40px;
       color: #5a5a5a;
     }
 
-
+     .lead{
+	 font-size:30px;
+	 }
 
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -32,7 +36,7 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 10;
+      z-index: 100;
       margin-top: 20px;
       margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
@@ -78,7 +82,7 @@
 
     .carousel .container {
       position: relative;
-      z-index: 9;
+      z-index: 8;
     }
 
     .carousel-control {
@@ -88,7 +92,7 @@
       text-shadow: 0 1px 1px rgba(0,0,0,.4);
       background-color: transparent;
       border: 0;
-      z-index: 10;
+      z-index: 9;
     }
 
     .carousel .item {
@@ -107,14 +111,14 @@
       position: static;
       max-width: 550px;
       padding: 0 20px;
-      margin-top: 200px;
+      margin-top: 400px;
     }
     .carousel-caption h1,
     .carousel-caption .lead {
       margin: 0;
       line-height: 1.25;
       color: #fff;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      text-shadow: 0 1px 7px rgba(0,0,0,.6);
     }
     .carousel-caption .btn {
       margin-top: 10px;
@@ -397,5 +401,6 @@
       }(window.jQuery)
     </script>
     <script src="bootstrap/js/holder/holder.js"></script>
+	<script src="bootstrap/js/mobile.js"></script>
   </body>
 </html>
