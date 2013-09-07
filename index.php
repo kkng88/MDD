@@ -340,7 +340,7 @@ function hideclass(match)
                 <li><a href="#" onclick="setlang('ml')">Malay</a></li>
                 <li><a href="#" onclick="setlang('cn')">Mandarin</a></li>
 				<li><a href="#" onclick="setlang('ja')">Japanese</a></li>
-				<li><a href="#" onclick="setlang('ge')">German</a></li>
+				<li><a href="#" onclick="setlang('sp')">Spanish</a></li>
 				
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
@@ -351,7 +351,7 @@ function hideclass(match)
                 <li><a href="#" onclick="redirect('ml')">Malay</a></li>
                 <li><a href="#" onclick="redirect('cn')">Mandarin</a></li>
 				<li><a href="#" onclick="redirect('ja')">Japanese</a></li>
-				<li><a href="#" onclick="redirect('ge')">German</a></li>
+				<li><a href="#" onclick="redirect('sp')">Spanish</a></li>
 				
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
@@ -385,6 +385,12 @@ function hideclass(match)
                 case 'cn':
                     $strTbl1 = 'mandrin';
                     break;
+				case 'ja':
+                    $strTbl1 = 'japanese';
+                    break;
+				case 'sp':
+                    $strTbl1 = 'spanish';
+                    break;
                 default:
                     $strTbl1 = 'english';
                     break;
@@ -398,6 +404,12 @@ function hideclass(match)
                     break;
                 case 'cn':
                     $strTbl2 = 'mandrin';
+					break;
+				case	
+				   $strTbl1 = 'japanese';
+                    break;
+				case 'sp':
+                    $strTbl1 = 'spanish';
                     break;
                 default:
                     $strTbl2 = 'malay';
