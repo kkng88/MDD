@@ -4,6 +4,7 @@
 	// include hybridauth lib
 	$config = dirname(__FILE__) . '/hybridauth/hybridauth/config.php';
 	require_once( "hybridauth/hybridauth/Hybrid/Auth.php" );
+    include('config.php');
 
 	// start login with facebook?
 	if( isset( $_GET["login"] ) ){
@@ -22,136 +23,98 @@
 	// logged in ?
 	if( ! isset( $user_profile ) ){
 ?>
-<p>
-A VERY basic example showing how to integrate Facebook Javascript SDK side by side with HybridAuth. Click the "Sign in" link to start.
-</p>
 
-<h2><a href ="fblogin.php?login=1">Sign in with facebook</a></h2> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Language Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    
+    <div class="container">
+        <br /><br />
+        <a href="fblogin.php?login=1"><img src="img/fb-login-button.png" /></a>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    
+  </body>
+</html>
+
 <?php
 	}
 	
 	// user signed in with facebook
 	else{
-        
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en">
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../social_hub/public/css.css" type="text/css">
-<script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script> 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script> 
-<style>
-pre{width:450px;overflow:auto;}
-</style>
-</head>
-<body>  
- 
-<table width="95%" border="0" cellpadding="2" cellspacing="2">
-<tr>
-<td width="50%" valign="top">
-
-<fieldset> 
-<legend>Hybridauth library</legend>
-<b>Hi <?php echo $user_profile->displayName; ?></b>, <br />your profile url is: <?php echo $user_profile->profileURL; ?>
-<hr />
-<b>Hybridauth access tokens for Facebook:</b>
-<pre><?php print_r( $adapter->getAccessToken() ); ?></pre> 
-</fieldset> 
-
-</td>
-<td width="50%" valign="top">
-
-<fieldset> 
-<legend>Facebook JavaScript SDK</legend>  
-You are logged into this site with Facebook and the <a href='https://developers.facebook.com/docs/reference/javascript/'>Javascript SDK</a> and you should be happy about that.
-<br />
-<br />
-<span id="hellomessage"></span>  
-<hr />
-<input value="Click on me to share this page on Facebook" style="height:30px;" type="submit" onclick="share_link()" /><br />
-<input value="Click on me to publish a random story your Facebook wall" style="height:30px;" type="submit" onclick="post_to_wall()" /><br />
-<input value="Click on me to invite friends" style="height:30px;" type="submit" onclick="invite_friends()" />
- 
-<hr /> 
-
-<br /> 
-Note: Inviting friends <b>may require some advanced</b> Facebook application configuration your side. To know more about FB.ui visit <a href='https://developers.facebook.com/docs/reference/javascript/FB.ui/'>https://developers.facebook.com/docs/reference/javascript/FB.ui/</a>
- 
-<div id="fb-root"></div> 
-<script src="http://connect.facebook.net/en_US/all.js"></script>  
-
-<script> 
-$(function(){ 
-	FB.init({ 
-		appId:'<?php echo $adapter->config["keys"]["id"]; ?>', // or simply set your appid hard coded
-		cookie:true, 
-		status : true,
-		xfbml:true
-	});
-
-	FB.getLoginStatus(function(response) {
-		console.log( response );
-		$("#hellomessage").after( "<br /><hr /><b>Facebook JavaScript SDK Login Status :</b>:<pre>" + JSON.stringify( response ) + "</pre>" );
-
-		FB.api('/me', function(response) {
-			console.log( response );
-			$("#hellomessage").html( "<b>Hi " + response.name + "</b>,<br />your profile url is: " + response.link );
-		}); 
-	});
-});
-
-// https://developers.facebook.com/docs/reference/dialogs/send/
-function share_link() { 
-	FB.ui({
-		method: 'send',
-		name: 'HybridAuth, open source social sign on php library',
-		link: 'http://hybridauth.sourceforge.net/',
-	});
-}
-
-// https://developers.facebook.com/docs/reference/dialogs/requests/
-function invite_friends() {  
-	FB.ui({
-		method: 'apprequests', message: '<?php echo $user_profile->displayName; ?> want you to join him at mywebsite.com.'
-	});
-}
-
-// https://developers.facebook.com/docs/reference/dialogs/feed/
-function post_to_wall() {  
-	var obj = {
-		method: 'feed',
-		link: 'http://hybridauth.sourceforge.net/',
-		picture: 'http://fbrell.com/f8.jpg',
-		name: 'HybridAuth',
-		caption: 'HybridAuth, open source social sign on php library',
-		description: 'HybridAuth, open source social sign on php library.'
-	};
-
-	function callback(response) {
-		document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
-	}
-
-	FB.ui(obj, callback);
-}
-
-function o2s (obj) {
-    var str = '';
-    for (var p in obj) {
-        if (obj.hasOwnProperty(p)) {
-            str += p + '::' + obj[p] + '\n';
+        //print_r($user_profile);
+        $con = mysql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD);
+        if (!$con){
+            die('Could not connect: ' . mysql_error());
         }
-    }
-    return str;
-} 
-</script> 
-
-
-</fieldset> 
-
-</tr>
-</table>
-</body>
-</html>
-<?php
+        mysql_select_db(DB_NAME);
+        $result = mysql_query('SELECT COUNT(*) AS cnt FROM user WHERE id=' .
+                mysql_real_escape_string($user_profile->identifier));
+        while($row = mysql_fetch_assoc($result)){
+            if($row['cnt'] > 0){
+                // Redirects
+                header('Location: http://glanzd.com/MDD2013/index.php');
+                exit;
+            }
+        }
+        
+        $sql = sprintf(
+            "INSERT INTO user(id, name, first, last,
+                            link, username, gender,
+                            locate)
+             VALUES('%s', '%s', '%s', '%s',
+                    '%s', '%s', '%s',
+                    '%s')
+         ",
+            mysql_real_escape_string($user_profile['identifier']),
+            mysql_real_escape_string($user_profile['displayName']),
+            mysql_real_escape_string($user_profile['firstName']),
+            mysql_real_escape_string($user_profile['lastName']),
+            mysql_real_escape_string($user_profile['photoURL']),
+            mysql_real_escape_string($user_profile['email']),
+            mysql_real_escape_string($user_profile['gender']),
+            mysql_real_escape_string($user_profile['region'])
+          );
+            
+          mysql_query($sql);  
+          mysql_close($con);
+          
+          header('Location: http://glanzd.com/MDD2013/index.php');
+          
 	}
