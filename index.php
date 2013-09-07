@@ -277,6 +277,7 @@ function redirect(lang2)
 }
 
 function setlang(lang1)
+{
 langa=lang1;
 }
  </script>
