@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Carousel Template &middot; Bootstrap</title>
+    <title>Language Learning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -287,9 +287,11 @@
             <a class="brand" href="#">Learn language</a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
-              <ul class="nav">
+              <ul class="nav" style=" opacity: 0.5;-moz-opacity: 0.5;-webkit-opacity: 0.5;">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">Setting</a></li>
+                <li><a href="index.php?lang1=en&lang2=ml">English-Malay</a></li>
+                <li><a href="index.php?lang1=en&lang2=cn">English-Chinese</a></li>
+                <li><a href="index.php?lang1=ml&lang2=cn">Malay-Chinese</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
               </ul>
@@ -306,38 +308,79 @@
     ================================================== -->
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
-        <div class="item active">
-          <img src="img/cat.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Cat</h1>
-              <p class="lead">Cat</p>
-            </div>
-          </div>
-        </div>
           
-        <div class="item">
-          <img src="img/dog.jpg" alt="">
+        <?php
+            include('config.php');
+        
+            $strLang1 = $_GET['lang1'];
+            $strLang2 = $_GET['lang2'];
+            
+            switch($strLang1){
+                case 'en';
+                    $strTbl1 = 'english';
+                    break;
+                case 'ml':
+                    $strTbl1 = 'malay';
+                    break;
+                case 'cn':
+                    $strTbl1 = 'mandrin';
+                    break;
+                default:
+                    $strTbl1 = 'english';
+                    break;
+            }
+            switch($strLang2){
+                case 'en';
+                    $strTbl2 = 'english';
+                    break;
+                case 'ml':
+                    $strTbl2 = 'malay';
+                    break;
+                case 'cn':
+                    $strTbl2 = 'mandrin';
+                    break;
+                default:
+                    $strTbl2 = 'malay';
+                    break;
+            }
+            
+            $con = mysql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD);
+            if (!$con){
+                die('Could not connect: ' . mysql_error());
+            }
+            mysql_select_db(DB_NAME);
+            
+            mysql_query('SET NAMES "utf8"');
+            $sql = sprintf(
+                    "SELECT p1.filename AS img, l1.value AS lang1, l2.value AS lang2 FROM
+                    photos p1, %s l1, %s l2 WHERE
+                    l1.ID=p1.id AND l2.ID=p1.id", $strTbl1, $strTbl2);
+            $result = mysql_query($sql,$con);
+
+            $strOut = '';
+            while($row = mysql_fetch_assoc($result)){
+                $strOut .= sprintf('<div class="item%s">
+          <img src="%s/%s" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Dog</h1>
-              <p class="lead">Dog</p>
+              <h1>%s</h1>
+              <p class="lead">%s</p>
             </div>
           </div>
-        </div>
+        </div>', 
+               $strOut ? '' : ' active',
+               IMG_ROOT, $row['img'], $row['lang1'], $row['lang2']);
+            }
+            mysql_close($con);
+            
+            echo $strOut;
+?> 
+        
         
       </div>
       <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div><!-- /.carousel -->
-
-
-
-    
-
-    
-
-
 
     <!-- Le javascript
     ================================================== -->
