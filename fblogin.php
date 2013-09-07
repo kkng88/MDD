@@ -95,9 +95,9 @@
         }
         
         $sql = sprintf(
-            "INSERT INTO user(id, name, first, last,
+            "INSERT INTO users(id, name, first, last,
                             link, username, gender,
-                            locate)
+                            locale)
              VALUES('%s', '%s', '%s', '%s',
                     '%s', '%s', '%s',
                     '%s')
@@ -112,7 +112,11 @@
             mysql_real_escape_string($user_profile->region)
           );
             
-          mysql_query($sql);  
+          $result = mysql_query($sql);
+          if($result === false){
+              echo mysql_error();
+              exit;
+          }
           mysql_close($con);
           
           header('Location: http://glanzd.com/MDD2013/index.php');
