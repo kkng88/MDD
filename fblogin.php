@@ -38,6 +38,7 @@
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      	background-image:url("http://howtodrawanimals.net/wp-content/uploads/2010/05/drawing.jpg");
       }
     </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
