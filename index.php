@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"><title>Pictionary</title>
+    <meta charset="utf-8">
+    <title>Pictionary</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0; user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">--<
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -18,10 +20,12 @@
     /* Padding below the footer and lighter body text */
 	html {
 	overflow: hidden;
+	max-width:100%;
 	}
     body {
-      padding-bottom: 40px;
+      padding-bottom: 0px;
       color: #5a5a5a;
+	  max-width:100%;
     }
 
      .lead{
@@ -257,6 +261,9 @@
       }
 
     }
+	.menuitem1, .menuitem1 li a{
+	color: #FFFFFF;
+	}
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -407,10 +414,10 @@ function hideclass(match)
                     $strTbl2 = 'mandrin';
 					break;
 				case	
-				   $strTbl1 = 'japanese';
+				    $strTbl2 = 'japanese';
                     break;
 				case 'sp':
-                    $strTbl1 = 'spanish';
+                    $strTbl2 = 'spanish';
                     break;
                 default:
                     $strTbl2 = 'malay';
